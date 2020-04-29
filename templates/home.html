@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for item in items %}
+    <p class="text-white">{{ item }}: <br> {{ item.type }}, {{ item.value }}.
+    </p>
+{% endfor %}
+{% endblock content %}

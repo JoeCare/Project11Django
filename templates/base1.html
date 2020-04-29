@@ -1,0 +1,107 @@
+{% load static %}
+<!--27.-->
+<!DOCTYPE html>
+<html lang="en">
+<!-- 23. -->
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>{% block title %}{% endblock title %}</title>
+
+    {% block styling %}
+        <!-- Bootstrap CSS -->
+        {% comment %} <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> {% endcomment %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{% static 'player/style.css' %}">
+
+    {% endblock styling %}
+
+</head>
+<body class="bg-dark text-white">
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md navbar-dark sticky-top mb-1">
+            <div class="container bg-info mb-2 border">
+                <a class="navbar-brand p-3 font-weight-bold" href="#">Project8</a>  <!--28.-->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">Click</span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarToggle">
+                    <div class="navbar-nav ml-auto">
+                    {% if user.is_authenticated %}
+                        <a class="nav-item nav-link" style="color:#" href="#">Home</a>  <!--28.-->
+                    {% else %}
+                        <a class="nav-item nav-link" style="color:#" href="#">Home</a>  <!--28.-->
+                    {% endif %}
+                        <a class="nav-item nav-link" style="color:#" href="#">About</a>  <!--28.-->
+                    </div>
+    <!-- Navbar Right Side # edited at 83.-->
+                    <div class="navbar-nav">
+                        {% if user.is_authenticated %}
+                            <a class="nav-item nav-link" style="color:#" href="#">New post</a>
+                            <a class="nav-item nav-link" style="color:#" href="#">Profile</a>
+                            <a class="nav-item nav-link" style="color:#" href="#">Logout</a>
+                        {% else %}
+                            <a class="nav-item nav-link" style="color:#" href="#">Login</a>
+                            <a class="nav-item nav-link" style="color:#" href="#">Register</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main role="main" class="container-fluid">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% block content %}
+
+                    {% endblock %}
+                </div>
+                <div class="col-md-4">
+                    {% block bar %}
+                        <div class="content-section bg-info mt-5 mb-5 border">
+                            <h3 class="text-white font-italic text-center">Sidebar</h3>
+                            <p class="text-white text-center">Sidebar with handy shortcuts to most important info.</p>
+                            <ul class="list-group bg-dark mb-3">
+                                <li class="list-group-item list-group-item-danger">Latest Posts</li>
+                                <li class="list-group-item list-group-item-danger">Announcements</li>
+                                <li class="list-group-item list-group-item-danger">Calendars</li>
+                                <li class="list-group-item list-group-item-danger">Other</li>
+                            </ul>
+                        </div>
+                    {% endblock bar %}
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    {% comment %} New Bootstrap4
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> {% endcomment %}
+
+<!--    <footer class="navbar navbar-expand-md justify-content-around" style="background-color:#990000">-->
+<!--        <div class="d-flex flex-row bg-dark text-danger">-->
+<!--            <div class="col-md-3">Author</div>-->
+<!--            <div class="col-md-3">Contact</div>-->
+<!--            <div class="col-md-3">Links</div>-->
+<!--        </div>-->
+<!--    </footer>-->
+</body>
+

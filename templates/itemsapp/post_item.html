@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+    Your shelf
+{% endblock title %}
+
+{% block content %}
+<main class="container">
+    <div class="tab-content">
+    <h2 class="border-bottom-1">What do you want to add?</h2>
+        <form class="form-group" action="post_url/" method="POST" accept-charset="utf-8">
+            {% csrf_token %}
+            {{ form|crispy }}
+        </form>
+            <button class="btn btn-outline-info" type="submit">Add</button>
+            {# fafa- heart - try icons from Font Awesome #}
+    </div>
+</main>
+{% endblock content %}
+
+{% block bar %}{% endblock bar %}
